@@ -1,3 +1,5 @@
+const res = require('express/lib/response')
+
 const router = require('express').Router()
 
 router.get('/new', (req, res) => {
@@ -19,6 +21,10 @@ router.get('/', (req, res) => {
         pic: '/images/coffee-cat.jpg',
 }]
         res.render('places/index.jsx', { places })
+})
+
+router.post('/', (req, res) => {
+    res.send('POST /places')
 })
 
 module.exports = router
