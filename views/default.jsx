@@ -9,6 +9,9 @@ function Def (html) {
                 <link rel="stylesheet" href="/css/style.css"/>
             </head>
             <body>
+                <nav>
+                    <ul></ul>
+                </nav>
                 {html.children}
             </body>
         </html>
