@@ -1,0 +1,22 @@
+{
+  "name": "restrant",
+  "version": "1.0.0",
+  "description": "project-REST-rant",
+  "main": "index.js",
+  "scripts": {
+    "test": "hi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlove89/RESTrant.git"
+  },
+  "keywords": [
+    "project"
+  ],
+  "author": "jlove89",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlove89/RESTrant/issues"
+  },
+  "homepage": "https://github.com/jlove89/RESTrant#readme"
+}
