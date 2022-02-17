@@ -1,12 +1,6 @@
 const res = require('express/lib/response')
-
 const router = require('express').Router()
-
 const places = require('../models/places')
-
-router.get('/new', (req, res) => {
-    res.render('places/new')
-  })
 
 router.get('/', (req, res) => {
     let places = [{
@@ -27,7 +21,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     if (!req.body.pic) {
-      // Default image if one is not provided
       req.body.pic = 'http://placekitten.com/400/400'
     }
     if (!req.body.city) {
@@ -40,6 +33,7 @@ router.post('/', (req, res) => {
     res.redirect('/places')
   })
 
+  //New Places
   router.get('/new', (req, res) => {
     res.render('places/new')
   })
@@ -81,7 +75,6 @@ router.post('/', (req, res) => {
     else {
         // Dig into req.body and make sure data is valid
         if (!req.body.pic) {
-            // Default image if one is not provided
             req.body.pic = 'http://placekitten.com/400/400'
         }
         if (!req.body.city) {
@@ -91,13 +84,13 @@ router.post('/', (req, res) => {
             req.body.state = 'USA'
         }
   
-        // Save the new data into places[id]
+        // Save new data into places[id]
         places[id] = req.body
         res.redirect(`/places/${id}`)
     }
   })
   
-  router.delete('/places/:id', (req, res) => {
+  router.delete('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
       res.render('error404')
