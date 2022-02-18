@@ -2,6 +2,7 @@ const res = require('express/lib/response')
 const router = require('express').Router()
 const places = require('../models/places')
 
+// Route 1
 router.get('/', (req, res) => {
     let places = [{
         name: 'H-Thai-ML',
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 }]
         res.render('places/index.jsx', { places })
 })
-
+// Route 2
 router.post('/', (req, res) => {
     if (!req.body.pic) {
       req.body.pic = 'http://placekitten.com/400/400'
@@ -33,11 +34,12 @@ router.post('/', (req, res) => {
     res.redirect('/places')
   })
 
-  //New Places
+  //New Places (route 3)
   router.get('/new', (req, res) => {
     res.render('places/new')
   })
-
+  
+  //Route 4
   router.get('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
@@ -50,20 +52,8 @@ router.post('/', (req, res) => {
       res.render('places/show', { place: places[id], id })
     }
   })
-
-  router.get('/:id/edit', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-      res.render('places/edit', { place: places[id] })
-    }
-  })
   
+  // Route 5
   router.put('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
@@ -90,6 +80,21 @@ router.post('/', (req, res) => {
     }
   })
   
+    // Route 6
+    router.get('/:id/edit', (req, res) => {
+      let id = Number(req.params.id)
+      if (isNaN(id)) {
+          res.render('error404')
+      }
+      else if (!places[id]) {
+          res.render('error404')
+      }
+      else {
+        res.render('places/edit', { place: places[id] })
+      }
+    })
+
+  // Route 7
   router.delete('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
