@@ -81,18 +81,16 @@ router.post('/', (req, res) => {
   })
   
     // Route 6
-    router.get('/:id/edit', (req, res) => {
-      let id = Number(req.params.id)
+    router.get("/:id/edit", (req, res) => {
+      let id = Number(req.params.id);
       if (isNaN(id)) {
-          res.render('error404')
+        res.render("error404");
+      } else if (!places[id]) {
+        res.render("error404");
+      } else {
+        res.render("places/edit", { place: places[id], id });
       }
-      else if (!places[id]) {
-          res.render('error404')
-      }
-      else {
-        res.render('places/edit', { place: places[id] })
-      }
-    })
+    });
 
   // Route 7
   router.delete('/:id', (req, res) => {
